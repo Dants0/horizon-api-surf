@@ -30,14 +30,10 @@ const batteryController = {
 
       const [rows] = await connection.query("SELECT id, nome, pais FROM surfista");
 
-      // let bateriaId = ''
       for (const i of rows) {
         const [resultadoBateria] = await connection.query('INSERT INTO bateria (surfista_nome, surfista_pais) VALUES (?,?)', [i.nome, i.pais]);
         bateriaId = resultadoBateria.insertId
       }
-
-      // const [resultadoBateria] = await connection.query('INSERT INTO bateria (surfista_nome, surfista_pais) VALUES (?,?)', [i.nome, i.pais]);
-      // bateriaId = resultadoBateria.insertId
 
       // for (const surfista of rows) {
       //   await connection.query('INSERT INTO onda (surfista_id, bateria_id) VALUES (?, ?)', [surfista.id, bateriaId]);
@@ -45,7 +41,6 @@ const batteryController = {
 
       res.json({
         message: 'Nova bateria criada com sucesso!',
-        // bateriaId: bateriaId,
       });
     } catch (e) {
       console.log(e)
