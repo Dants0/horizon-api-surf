@@ -18,11 +18,15 @@ app.use("/api/v1/surfer/", updateSurfer)
 app.use("/api/v1/surfer/", deleteSurfer)
 
 const newBattery = require("./src/routes/newBattery.router")
+const viewBattery  = require("./src/routes/viewBattery.router")
 
 app.use("/api/v1/bateria", newBattery)
+app.use("/api/v1/bateria", viewBattery)
 
 const newWave = require("./src/routes/newWave.router")
 app.use("/api/v1/wave", newWave)
 
+const assignNotes = require("./src/routes/newNote.router")
+app.use("/api/v1/notes/", assignNotes)
 
 app.listen(process.env.PORT || port, ()=> console.log('listening on port 3000'))
