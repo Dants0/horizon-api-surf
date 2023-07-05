@@ -21,6 +21,8 @@ const newBattery = require("./src/routes/newBattery.router")
 
 app.use("/api/v1/bateria", newBattery)
 
+const newWave = require("./src/routes/newWave.router")
+app.use("/api/v1/wave", newWave)
 
 
 app.listen(process.env.PORT || port, ()=> console.log('listening on port 3000'))
