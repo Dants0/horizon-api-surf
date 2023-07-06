@@ -4,6 +4,7 @@ const surferController = {
     try {
       const query = "select * from surfista"
       const [rows, fields] = await connection.query(query)
+      console.log(rows)
       res.status(200).json({
         code: 200,
         message: "Todos os surfistas cadastrados retornados com sucesso",
@@ -11,7 +12,7 @@ const surferController = {
       })
     } catch (error) {
       const { code = 500, message = 'Internal Error', reasons = [] } = error
-      res.status(code).json({ code, message, reasons })
+      res.status(500).json({ code, message, reasons })
     }
   },
 
@@ -37,7 +38,7 @@ const surferController = {
       })
     } catch (error) {
       const { code = 500, message = 'Internal Error', reasons = [] } = error
-      res.status(code).json({ code, message, reasons })
+      res.status(500).json({ code, message, reasons })
     }
   },
 
@@ -63,7 +64,7 @@ const surferController = {
       })
     } catch (error) {
       const { code = 500, message = 'Internal Error', reasons = [] } = error
-      res.status(code).json({ code, message, reasons })
+      res.status(500).json({ code, message, reasons })
     }
   },
 
@@ -79,7 +80,7 @@ const surferController = {
       })
     } catch (error) {
       const { code = 500, message = 'Internal Error', reasons = [] } = error
-      res.status(code).json({ code, message, reasons })
+      res.status(500).json({ code, message, reasons })
     }
   },
 
@@ -110,7 +111,7 @@ const surferController = {
       })
     } catch (error) {
       const { code = 500, message = 'Internal Error', reasons = [] } = error
-      res.status(code).json({ code, message, reasons })
+      res.status(500).json({ code, message, reasons })
     }
   },
 
@@ -139,7 +140,7 @@ const surferController = {
       })
     } catch (error) {
       const { code = 500, message = 'Internal Error', reasons = [] } = error
-      res.status(code).json({ code, message, reasons })
+      res.status(500).json({ code, message, reasons })
     }
   }
 }

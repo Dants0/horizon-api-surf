@@ -29,4 +29,4 @@ app.use("/api/v1/wave", newWave)
 const assignNotes = require("./src/routes/newNote.router")
 app.use("/api/v1/notes/", assignNotes)
 
-app.listen(process.env.PORT || port)
+app.listen(process.env.PORT || port, ()=>console.log("server is running"))

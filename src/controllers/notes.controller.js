@@ -40,7 +40,7 @@ const notesController = {
       });
     } catch (error) {
       const { code = 500, message = 'Internal Error', reasons = [] } = error
-      res.status(code).json({ code, message, reasons })
+      res.status(500).json({ code, message, reasons })
     }
   }  
   
