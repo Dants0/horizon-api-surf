@@ -20,8 +20,8 @@ app.use("/api/v1/surfer/", deleteSurfer)
 const newBattery = require("./src/routes/newBattery.router")
 const viewBattery  = require("./src/routes/viewBattery.router")
 
-app.use("/api/v1/bateria", newBattery)
-app.use("/api/v1/bateria", viewBattery)
+app.use("/api/v1/battery", newBattery)
+app.use("/api/v1/battery", viewBattery)
 
 const newWave = require("./src/routes/newWave.router")
 app.use("/api/v1/wave", newWave)
