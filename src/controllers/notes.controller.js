@@ -10,10 +10,11 @@ const notesController = {
       const { id: ondaId, bateria_id: bateriaId } = onda[0];
   
       const [surfista] = await connection.query("SELECT nome FROM surfista WHERE id = ?", [surfistaId]);
-      if (!surfista) {
-        res.json({
-          error: "Surfista não encontrado",
-          status: '404',
+      if (surfista.length === 0) {
+        res.status(400).json({
+          code: 400,
+          message: `Surfista ${surfistaId} não existe`,
+          data: {surfista: surfista}
         });
         return;
       }
@@ -24,22 +25,22 @@ const notesController = {
   
       await connection.query('INSERT INTO nota (onda_id, nota1, nota2, nota3, notaFinal, surfista_id, surfista_nome) VALUES (?, ?, ?, ?, ?, ?, ?)', [bateriaId, nota1, nota2, nota3, notaFinal.toFixed(2), surfistaId, surfista[0].nome]);
   
-      res.json({
+      res.status(201).json({
+        code: 201,
         message: 'Notas atribuídas com sucesso!',
-        ondaId: ondaId,
-        surfistaId: surfistaId,
-        surfistaNome: surfista[0].nome,
-        nota1: nota1,
-        nota2: nota2,
-        nota3: nota3,
-        notaFinal: notaFinal.toFixed(2),
+        data: {
+          ondaId: ondaId,
+          surfistaId: surfistaId,
+          surfistaNome: surfista[0].nome,
+          nota1: nota1,
+          nota2: nota2,
+          nota3: nota3,
+          notaFinal: notaFinal.toFixed(2),
+        }
       });
-    } catch (e) {
-      console.log(e);
-      res.json({
-        error: "Error",
-        status: '400',
-      });
+    } catch (error) {
+      const { code = 500, message = 'Internal Error', reasons = [] } = error
+      res.status(code).json({ code, message, reasons })
     }
   }  
   

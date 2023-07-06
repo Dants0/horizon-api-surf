@@ -1,28 +1,5 @@
 const connection = require("../connection/db")
 
-const randomLocals = [
-  {
-    id: 1,
-    local: "Ipanema"
-  },
-  {
-    id: 2,
-    local: "Malibu"
-  }
-]
-
-function getRandomLocal(surfistas) {
-  const randomIndex = Math.floor(Math.random() * randomLocals.length);
-  const randomLocal = randomLocals[randomIndex].local;
-
-  for (const surfista of surfistas) {
-    surfista.local = randomLocal;
-  }
-
-  return randomLocal;
-}
-
-
 const batteryController = {
 
   createNewBattery: async (req, res) => {
@@ -36,16 +13,17 @@ const batteryController = {
         bateriaId = resultadoBateria.insertId
       }
 
-      res.json({
+
+
+
+      res.status(201).json({
+        code: 201,
         message: 'Nova bateria criada com sucesso!',
-        bateriaId: bateriaId
+        data: {bateriaId: bateriaId}
       });
-    } catch (e) {
-      console.log(e)
-      res.json({
-        error: "Error",
-        status: '400',
-      })
+    } catch (error) {
+      const { code = 500, message = 'Internal Error', reasons = [] } = error
+      res.status(code).json({ code, message, reasons })
     }
   },
 
@@ -65,15 +43,20 @@ const batteryController = {
 
       const winner = rows[0];
 
-      res.json({
-        message: winner,
+      if (rows.length === 0) {
+        return res
+          .status(400)
+          .json({ code: 400, message: `Onda da bateria ${id} não encontrado` })
+      }
+
+      res.status(200).json({
+        code: 200,
+        message: `O vencedor da bateria ${id} foi ${winner.surfista_nome}`,
+        data: winner
       });
-    } catch (e) {
-      console.log(e)
-      res.json({
-        error: "Error",
-        status: '400',
-      })
+    } catch (error) {
+      const { code = 500, message = 'Internal Error', reasons = [] } = error
+      res.status(code).json({ code, message, reasons })
     }
   }
 

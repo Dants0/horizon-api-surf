@@ -7,23 +7,35 @@ const waveController = {
       const [bateria] = await connection.query("SELECT id FROM bateria ORDER BY id DESC LIMIT 1");
       const [surfistas] = await connection.query("SELECT id, nome FROM surfista");
   
+      if(bateria.length === 0 || surfistas.length === 0){
+        res.status(400).json({
+          code: 400,
+          message: `Bateria não encontrada. Não foi possível criar uma nova onda!`,
+          data: {
+            bateria: bateria,
+            surfistas: surfistas
+          }
+        });
+        return;
+      }
+
       const bateriaId = bateria[0].id;
   
       for (const surfista of surfistas) {
         await connection.query('INSERT INTO onda (bateria_id, surfista_id) VALUES (?, ?)', [bateriaId, surfista.id]);
       }
   
-      res.json({
+      res.status(201).json({
+        code: 201,
         message: 'Nova onda criada com sucesso!',
-        bateriaId: bateriaId,
-        surfistas: surfistas.map(surfista => surfista.nome),
+        data: {
+          bateriaId: bateriaId,
+          surfistas: surfistas.map(surfista => surfista.nome),
+        }
       });
-    } catch (e) {
-      console.log(e);
-      res.json({
-        error: "Error",
-        status: '400',
-      });
+    } catch (error) {
+      const { code = 500, message = 'Internal Error', reasons = [] } = error
+      res.status(code).json({ code, message, reasons })
     }
   }
   

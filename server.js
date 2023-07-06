@@ -11,7 +11,7 @@ const viewSurfer = require("./src/routes/viewSurfer.router")
 const updateSurfer = require("./src/routes/updateSurfer.router")
 const deleteSurfer = require("./src/routes/deleteSurfer.router")
 
-app.use("/api/v1/", viewSurfer)
+app.use("/api/v1/surfer/", viewSurfer)
 app.use("/api/v1/surfer/", viewSurfer)
 app.use("/api/v1/surfer/register", newSurfer)
 app.use("/api/v1/surfer/", updateSurfer)

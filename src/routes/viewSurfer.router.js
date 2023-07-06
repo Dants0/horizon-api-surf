@@ -3,7 +3,7 @@ const router = express.Router()
 
 const surferController = require("../controllers/surfer.controller")
 
-router.get("/surfer", surferController.getAllSurfers)
+router.get("/", surferController.getAllSurfers)
 
 router.get("/:id", surferController.getSurferById)
 
