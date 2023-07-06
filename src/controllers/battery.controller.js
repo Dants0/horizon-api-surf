@@ -31,11 +31,11 @@ const batteryController = {
     try {
 
       const { id } = req.params;
-      const query = `SELECT surfista_id, surfista_nome, SUM(notaFinal) as somatorio
+      const query = `SELECT surfista_id, surfista_nome, ROUND(SUM(notaFinal), 2) as notaFinal
       FROM Nota
       WHERE onda_id = ${id}
       GROUP BY surfista_id, surfista_nome
-      ORDER BY somatorio DESC
+      ORDER BY notaFinal DESC
       LIMIT 1;`;
 
       const [rows, fields] = await connection.query(query);
