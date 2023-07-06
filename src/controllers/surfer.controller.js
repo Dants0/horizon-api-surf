@@ -2,7 +2,7 @@ const connection = require("../connection/db")
 const surferController = {
   getAllSurfers: async (req, res) => {
     try {
-      const query = "select * from surfista"
+      const query = "select * from Surfista"
       const [rows, fields] = await connection.query(query)
       console.log(rows)
       res.status(200).json({
@@ -19,7 +19,7 @@ const surferController = {
   getSurferById: async (req, res) => {
     try {
       const { id } = req.params
-      const query = `select * from surfista where id = ${id}`
+      const query = `select * from Surfista where id = ${id}`
       const [rows, fields] = await connection.query(query)
 
       if (rows.length === 0) {
@@ -45,7 +45,7 @@ const surferController = {
   getSurferByCountry: async (req, res) => {
     try {
       const { pais } = req.params
-      const query = "SELECT * FROM surfista WHERE pais = ?";
+      const query = "SELECT * FROM Surfista WHERE pais = ?";
       const [rows, fields] = await connection.query(query, [pais])
 
       if(rows.length === 0) {
@@ -71,7 +71,7 @@ const surferController = {
   createNewSurfer: async (req, res) => {
     try {
       const { nome, pais } = req.body
-      const sql = "insert into surfista (nome, pais) values (?, ?)"
+      const sql = "insert into Surfista (nome, pais) values (?, ?)"
       const [rows, fields] = await connection.query(sql, [nome, pais])
       res.status(201).json({
         code: 201,
@@ -89,10 +89,10 @@ const surferController = {
       const { nome, pais } = req.body
       const { id } = req.params
 
-      const sql = `select * from surfista where id = ${id}`
+      const sql = `select * from Surfista where id = ${id}`
       const [surfista] = await connection.query(sql)
 
-      const query = `update surfista set nome = ?, pais = ? where id = ${id}`
+      const query = `update Surfista set nome = ?, pais = ? where id = ${id}`
       const [rows, fields] = await connection.query(query, [nome, pais, id])
 
       if(surfista.length === 0) {
@@ -119,7 +119,7 @@ const surferController = {
     try {
       const { id } = req.params
 
-      const sql = `select * from surfista where id = ${id}`
+      const sql = `select * from Surfista where id = ${id}`
       const [surfista] = await connection.query(sql)
 
       if(surfista.length === 0) {
@@ -131,7 +131,7 @@ const surferController = {
         return;
       }
 
-      const query = `delete from surfista where id = ${id}`
+      const query = `delete from Surfista where id = ${id}`
       const [rows, fields] = await connection.query(query)
       res.status(200).json({
         code: 200,

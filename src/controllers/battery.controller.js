@@ -5,11 +5,11 @@ const batteryController = {
   createNewBattery: async (req, res) => {
     try {
 
-      const [rows] = await connection.query("SELECT id, nome, pais FROM surfista");
+      const [rows] = await connection.query("SELECT id, nome, pais FROM Surfista");
 
       let bateriaId = ''
       for (const i of rows) {
-        const [resultadoBateria] = await connection.query('INSERT INTO bateria (surfista_nome, surfista_pais) VALUES (?,?)', [i.nome, i.pais]);
+        const [resultadoBateria] = await connection.query('INSERT INTO Bateria (surfista_nome, surfista_pais) VALUES (?,?)', [i.nome, i.pais]);
         bateriaId = resultadoBateria.insertId
       }
 
@@ -32,7 +32,7 @@ const batteryController = {
 
       const { id } = req.params;
       const query = `SELECT surfista_id, surfista_nome, SUM(notaFinal) as somatorio
-      FROM nota
+      FROM Nota
       WHERE onda_id = ${id}
       GROUP BY surfista_id, surfista_nome
       ORDER BY somatorio DESC

@@ -4,7 +4,8 @@ const connection = mysql.createPool({
   port: 3306,
   user: "usesbrc9dbmnexiy",
   password: "KzFs8NCEigdZTEhQittA",
-  database: "b3ekpfxyvl4jjppu6iqk"
+  database: "b3ekpfxyvl4jjppu6iqk",
+  uri: "mysql://usesbrc9dbmnexiy:KzFs8NCEigdZTEhQittA@b3ekpfxyvl4jjppu6iqk-mysql.services.clever-cloud.com:3306/b3ekpfxyvl4jjppu6iqk"
 })
 
 module.exports = connection.promise()

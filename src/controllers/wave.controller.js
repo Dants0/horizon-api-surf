@@ -4,8 +4,8 @@ const waveController = {
 
   createNewWave: async (req, res) => {
     try {
-      const [bateria] = await connection.query("SELECT id FROM bateria ORDER BY id DESC LIMIT 1");
-      const [surfistas] = await connection.query("SELECT id, nome FROM surfista");
+      const [bateria] = await connection.query("SELECT id FROM Bateria ORDER BY id DESC LIMIT 1");
+      const [surfistas] = await connection.query("SELECT id, nome FROM Surfista");
   
       if(bateria.length === 0 || surfistas.length === 0){
         res.status(400).json({
@@ -22,7 +22,7 @@ const waveController = {
       const bateriaId = bateria[0].id;
   
       for (const surfista of surfistas) {
-        await connection.query('INSERT INTO onda (bateria_id, surfista_id) VALUES (?, ?)', [bateriaId, surfista.id]);
+        await connection.query('INSERT INTO Onda (bateria_id, surfista_id) VALUES (?, ?)', [bateriaId, surfista.id]);
       }
   
       res.status(201).json({

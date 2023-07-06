@@ -6,10 +6,10 @@ const notesController = {
     try {
       const surfistaId = req.params.surfistaId;
   
-      const [onda] = await connection.query("SELECT id, bateria_id FROM onda ORDER BY id DESC LIMIT 1");
+      const [onda] = await connection.query("SELECT id, bateria_id FROM Onda ORDER BY id DESC LIMIT 1");
       const { id: ondaId, bateria_id: bateriaId } = onda[0];
   
-      const [surfista] = await connection.query("SELECT nome FROM surfista WHERE id = ?", [surfistaId]);
+      const [surfista] = await connection.query("SELECT nome FROM Surfista WHERE id = ?", [surfistaId]);
       if (surfista.length === 0) {
         res.status(400).json({
           code: 400,
@@ -23,7 +23,7 @@ const notesController = {
       const somaParcial = parseFloat(nota1) + parseFloat(nota2) + parseFloat(nota3);
       const notaFinal = somaParcial / 3;
   
-      await connection.query('INSERT INTO nota (onda_id, nota1, nota2, nota3, notaFinal, surfista_id, surfista_nome) VALUES (?, ?, ?, ?, ?, ?, ?)', [bateriaId, nota1, nota2, nota3, notaFinal.toFixed(2), surfistaId, surfista[0].nome]);
+      await connection.query('INSERT INTO Nota (onda_id, nota1, nota2, nota3, notaFinal, surfista_id, surfista_nome) VALUES (?, ?, ?, ?, ?, ?, ?)', [bateriaId, nota1, nota2, nota3, notaFinal.toFixed(2), surfistaId, surfista[0].nome]);
   
       res.status(201).json({
         code: 201,
