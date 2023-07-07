@@ -43,12 +43,12 @@ A Api possui todos os requisitos solicitados na atividade referentes a um campeo
   </li>
   <li>
   Inserir surfista
-  <a href="https://horizon-campeonato-surf.onrender.com/api/v1/surfer/register">https://horizon-campeonato-surf.onrender.com/api/v1/surfer/register</a>
+  <a href="https://horizon-campeonato-surf.onrender.com/api/v1/surfer/register">https://horizon-campeonato-surf.onrender.com/api/v1/surfer/register</a> ||
   <a href="https://i.ibb.co/k5rDZR7/imagem-2023-07-06-190229440.png">Inserção</a>
   </li>
   <li>
   Alterar surfista
-  <a href="https://horizon-campeonato-surf.onrender.com/api/v1/surfer/">https://horizon-campeonato-surf.onrender.com/api/v1/surfer/</a>
+  <a href="https://horizon-campeonato-surf.onrender.com/api/v1/surfer/">https://horizon-campeonato-surf.onrender.com/api/v1/surfer/</a> ||
   <a href="https://i.ibb.co/gF16PdY/imagem-2023-07-06-192410275.png">Alterar dados</a>
   </li>
   <li>
@@ -69,7 +69,7 @@ A Api possui todos os requisitos solicitados na atividade referentes a um campeo
   </li>
   <li>
   Cadastrar novas notas em uma onda
-  <a href="https://horizon-campeonato-surf.onrender.com/api/v1/notes/:id">https://horizon-campeonato-surf.onrender.com/api/v1/notes/:id</a>
+  <a href="https://horizon-campeonato-surf.onrender.com/api/v1/notes/:id">https://horizon-campeonato-surf.onrender.com/api/v1/notes/:id</a> ||
   <a href="https://i.ibb.co/9pf0j7g/imagem-2023-07-06-191955828.png">Inserir notas na onda</a>
   </li>
 </ul>
