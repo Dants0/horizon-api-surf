@@ -79,15 +79,15 @@ O projeto foi hospedado no Render e você pode conferir aqui [HorizonApi](https:
 
 ## 🧪 Tecnologias
 - [Node](https://nodejs.org/pt-br/docs)
-- [Javascript](https://devdocs.io/javascript/)
+- [JavaScript](https://devdocs.io/javascript/)
 - [NPM](https://www.npmjs.com/)
 - [Express](https://expressjs.com/pt-br/)
-- [Mysql](https://www.npmjs.com/package/mysql2)
+- [MySQL](https://www.npmjs.com/package/mysql2)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## 🔧 Ferramentas
 - [Insomnia](https://insomnia.rest)
-- [MYSQL Workbench](https://www.mysql.com/products/workbench/)
+- [MySQL Workbench](https://www.mysql.com/products/workbench/)
 
 ## ✨ Funcionalidades
 - [X] Inserir e excluir surfistas
